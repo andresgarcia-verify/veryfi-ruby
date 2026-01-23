@@ -66,7 +66,7 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
 
   spec.add_dependency "base64", "~> 0.1"
-  spec.add_dependency "openssl", ">= 2.2", "< 3.1"
+  spec.add_dependency "openssl", ">= 2.2", "< 4.1"
 
   spec.add_dependency "faraday", ">= 1.7", "< 3.0"
 
@@ -82,6 +82,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov-badge", "~> 2.0"
   spec.add_development_dependency "vcr", "~> 6.0"
   spec.add_development_dependency "webmock", "~> 3.14"
-  spec.add_development_dependency "rexml", "~> 3.2.7"
+  spec.add_development_dependency "rexml", "~> 3.4.4"
   spec.add_development_dependency "activesupport", "~> 6.0"
 end
