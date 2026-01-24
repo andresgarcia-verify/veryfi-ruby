@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    veryfi (2.0.0)
+    veryfi (2.1.0)
       base64 (~> 0.1)
       faraday (>= 1.7, < 3.0)
       openssl (>= 2.2, < 4.1)
@@ -18,7 +18,7 @@ GEM
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
-    base64 (0.2.0)
+    base64 (0.3.0)
     bigdecimal (3.1.8)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
