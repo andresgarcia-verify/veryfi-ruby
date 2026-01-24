@@ -34,29 +34,29 @@ RSpec.describe "LineItem API" do
 
     let(:line_item_params) do
       {
-        "date": "",
-        "description": "98 Meat Pty Xchz",
-        "discount": 0,
-        "end_date": "",
-        "hsn": "",
-        "order": 1,
-        "price": 12.5,
-        "quantity": 1,
-        "reference": "",
-        "section": "",
-        "sku": "038902058959",
-        "start_date": "",
-        "tags": [
+        date: "",
+        description: "98 Meat Pty Xchz",
+        discount: 0,
+        end_date: "",
+        hsn: "",
+        order: 1,
+        price: 12.5,
+        quantity: 1,
+        reference: "",
+        section: "",
+        sku: "038902058959",
+        start_date: "",
+        tags: [
           {
-            "id": 757_123,
-            "name": "tag"
+            id: 757_123,
+            name: "tag"
           }
         ],
-        "tax": 7.66,
-        "tax_rate": 7.66,
-        "total": 88.2,
-        "type": "food",
-        "unit_of_measure": ""
+        tax: 7.66,
+        tax_rate: 7.66,
+        total: 88.2,
+        type: "food",
+        unit_of_measure: ""
       }
     end
 

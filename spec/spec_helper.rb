@@ -20,7 +20,7 @@ unless ENV["CI"]
     # call SimpleCov::Formatter::BadgeFormatter after the normal HTMLFormatter
     SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
       SimpleCov::Formatter::HTMLFormatter,
-      SimpleCov::Formatter::BadgeFormatter,
+      SimpleCov::Formatter::BadgeFormatter
     ]
   end
 end

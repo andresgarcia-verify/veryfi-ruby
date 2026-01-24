@@ -92,10 +92,10 @@ module Veryfi
     def default_headers
       {
         "User-Agent": "Ruby Veryfi-Ruby/#{Veryfi::VERSION}",
-        "Accept": "application/json",
+        Accept: "application/json",
         "Content-Type": "application/json",
         "Client-Id": client_id,
-        "Authorization": "apikey #{username}:#{api_key}"
+        Authorization: "apikey #{username}:#{api_key}"
       }
     end
 
