@@ -10,10 +10,10 @@ RSpec.describe Veryfi::Request do
     let(:expected_headers) do
       {
         "User-Agent": "Ruby Veryfi-Ruby/#{Veryfi::VERSION}",
-        "Accept": "application/json",
+        Accept: "application/json",
         "Content-Type": "application/json",
         "Client-Id": "fBvJLm1zCJ8Doxf94mMrpbrkDp8nr",
-        "Authorization": "apikey john_doe:123456"
+        Authorization: "apikey john_doe:123456"
       }
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Veryfi::Request do
 
       response = client.document.all
 
-      expect(response).to match_array([{ "id" => 1 }])
+      expect(response).to contain_exactly({ "id" => 1 })
     end
   end
 
@@ -78,9 +78,7 @@ RSpec.describe Veryfi::Request do
           "details": [
             {
               "type": "value_error",
-              "loc": [
-
-              ],
+              "loc": [],
               "msg": "Value error, Only one of ..."
             }
           ]

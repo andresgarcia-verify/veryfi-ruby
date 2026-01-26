@@ -70,14 +70,14 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "faraday", ">= 1.7", "< 3.0"
 
-  spec.add_development_dependency "bundler", "~> 2.2"
+  spec.add_development_dependency "bundler", "~> 2.4"
   spec.add_development_dependency "bundler-audit", "~> 0.9"
   spec.add_development_dependency "pry", "~> 0.14"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.9"
   spec.add_development_dependency "rspec-its", "~> 1.3"
-  spec.add_development_dependency "rubocop", "~> 0.82"
-  spec.add_development_dependency "rubocop-rspec", "~> 1.38"
+  spec.add_development_dependency "rubocop", "~> 1.65"
+  spec.add_development_dependency "rubocop-rspec", "~> 3.0"
   spec.add_development_dependency "simplecov", "~> 0.21"
   spec.add_development_dependency "simplecov-badge", "~> 2.0"
   spec.add_development_dependency "vcr", "~> 6.0"

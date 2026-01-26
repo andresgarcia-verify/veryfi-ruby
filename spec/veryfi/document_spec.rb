@@ -33,16 +33,16 @@ RSpec.describe "Document API" do
 
     let(:document_params) do
       {
-        "file_path": Dir.pwd + "/spec/fixtures/receipt.jpg",
-        "auto_delete": true,
-        "boost_mode": true,
-        "async": false,
-        "external_id": "123456789",
-        "max_pages_to_process": 10,
-        "tags": [
+        file_path: Dir.pwd + "/spec/fixtures/receipt.jpg",
+        auto_delete: true,
+        boost_mode: true,
+        async: false,
+        external_id: "123456789",
+        max_pages_to_process: 10,
+        tags: [
           "tag1"
         ],
-        "categories": [
+        categories: [
           "Advertising & Marketing",
           "Automotive"
         ]
@@ -91,20 +91,20 @@ RSpec.describe "Document API" do
 
     let(:document_params) do
       {
-        "file_name": "invoice.png",
-        "file_url": "https://raw.githubusercontent.com/veryfi/veryfi-python/master/tests/assets/receipt_public.jpg",
-        "file_urls": [
+        file_name: "invoice.png",
+        file_url: "https://raw.githubusercontent.com/veryfi/veryfi-python/master/tests/assets/receipt_public.jpg",
+        file_urls: [
           "https://raw.githubusercontent.com/veryfi/veryfi-python/master/tests/assets/receipt_public.jpg"
         ],
-        "auto_delete": true,
-        "boost_mode": true,
-        "async": false,
-        "external_id": "123456789",
-        "max_pages_to_process": 10,
-        "tags": [
+        auto_delete: true,
+        boost_mode: true,
+        async: false,
+        external_id: "123456789",
+        max_pages_to_process: 10,
+        tags: [
           "tag1"
         ],
-        "categories": [
+        categories: [
           "Advertising & Marketing",
           "Automotive"
         ]
