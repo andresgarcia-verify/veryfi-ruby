@@ -83,13 +83,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.license = "MIT"
 
+  spec.required_ruby_version = ">= 3.0"
+
   spec.add_dependency "base64", "~> 0.1"
   spec.add_dependency "openssl", ">= 2.2", "< 4.1"
 
-  # Faraday 1.10.5+ and 2.14.1+ are both fixed for CVE-2026-25765.
-  # Faraday >= 2.9 requires Ruby >= 3.0, so users on Ruby 2.7 should pin
-  # `~> 1.10.5` explicitly in their Gemfile.
-  spec.add_dependency "faraday", ">= 1.10.5", "< 3.0"
+  # Faraday 2.14.1 is the floor of the CVE-2026-25765-fixed 2.x line.
+  spec.add_dependency "faraday", ">= 2.14.1", "< 3.0"
 
   spec.add_development_dependency "bundler", "~> 2.4"
   spec.add_development_dependency "bundler-audit", "~> 0.9"

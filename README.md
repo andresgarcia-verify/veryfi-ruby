@@ -294,7 +294,23 @@ require 'veryfi'
 | `3.x`   | Maintenance | Documents, line items, tags, document tags only.                                     |
 | `<=2.x` | Unsupported | Please upgrade.                                                                      |
 
-The minimum supported Ruby version is **2.7**.
+### Supported Ruby versions
+
+The minimum supported Ruby version is **3.0** (the floor of the Faraday
+2.x line, which is the gem's only non-stdlib runtime dependency). CI
+verifies the gem against:
+
+| Ruby   | Upstream status              | Notes                                  |
+| ------ | ---------------------------- | -------------------------------------- |
+| `3.0`  | End-of-life upstream         | Floor — best-effort, no Ruby-side fixes |
+| `3.1`  | End-of-life upstream         | Best-effort                            |
+| `3.2`  | Security maintenance         |                                        |
+| `3.3`  | Normal maintenance           |                                        |
+| `3.4`  | Normal maintenance           |                                        |
+| `4.0`  | Current stable               |                                        |
+
+Ruby 2.7 and earlier are not supported. If you need to stay on Ruby 2.7
+pin the `veryfi` 3.x release line, which targeted that vintage of Ruby.
 
 The gem talks to Veryfi API version **`v8`** by default. You can override
 this at construction time if you are working against a different version:

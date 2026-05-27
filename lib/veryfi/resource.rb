@@ -47,9 +47,11 @@ module Veryfi
       super(key.to_s)
     end
 
+    # rubocop:disable Style/ArgumentsForwarding -- keep explicit forwarding for clarity and Ruby 3.0 portability
     def fetch(key, *args, &block)
       super(key.to_s, *args, &block)
     end
+    # rubocop:enable Style/ArgumentsForwarding
 
     def key?(key)
       super(key.to_s)
