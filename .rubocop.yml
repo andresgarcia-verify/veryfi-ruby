@@ -1,9 +1,12 @@
 plugins:
   - rubocop-rspec
+  - rubocop-rake
 
 AllCops:
+  TargetRubyVersion: 3.0
   DisplayCopNames: true
   NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - bin/**/*
     - tmp/**/*
@@ -61,7 +64,8 @@ Lint/RedundantDirGlobSort:
   Enabled: false
 
 Metrics/ParameterLists:
-  Max: 7
+  Max: 8
+  MaxOptionalParameters: 4
 
 Metrics/BlockLength:
   Exclude:

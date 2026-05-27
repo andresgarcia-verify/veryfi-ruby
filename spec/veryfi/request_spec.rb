@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "active_support/core_ext/string/strip"
 
 RSpec.describe Veryfi::Request do
   include_context :with_veryfi_client
@@ -34,7 +33,7 @@ RSpec.describe Veryfi::Request do
     end
 
     let(:expected_error) do
-      <<-TEXT.strip_heredoc.chomp
+      <<~TEXT.chomp
         {
           "code": 400,
           "error": "Bad Request"
@@ -71,7 +70,7 @@ RSpec.describe Veryfi::Request do
     end
 
     let(:expected_error) do
-      <<-TEXT.strip_heredoc.chomp
+      <<~TEXT.chomp
         {
           "code": 400,
           "error": "Bad Request",

@@ -1,0 +1,22 @@
+{
+  "documents": [
+    {
+      "id": 55003001,
+      "amount": 1234.56,
+      "check_number": "0001",
+      "date": "2024-04-01",
+      "payer": "John Doe",
+      "payee": "Acme Inc",
+      "created_date": "2024-04-02 10:00:00"
+    },
+    {
+      "id": 55003002,
+      "amount": 789.01,
+      "check_number": "0002",
+      "date": "2024-04-02",
+      "payer": "Jane Roe",
+      "payee": "Acme Inc",
+      "created_date": "2024-04-03 10:00:00"
+    }
+  ]
+}

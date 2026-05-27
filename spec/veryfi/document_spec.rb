@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe "Document API" do
   include_context :with_veryfi_client
 
-  let(:documents_fixture) { File.read("spec/fixtures/documents.json") }
+  let(:documents_fixture) { response_fixture_body("documents/list") }
   let(:documents) { JSON.parse(documents_fixture)["documents"] }
 
   it { expect(client.api_url).to eq "https://api.veryfi.com/api/v8" }
@@ -22,6 +22,14 @@ RSpec.describe "Document API" do
 
       expect(response["documents"][0]["id"]).to eq(44_691_518)
     end
+
+    it "returns a Veryfi::Resource supporting attribute-style access" do
+      response = client.document.all
+
+      expect(response).to be_a(Veryfi::Resource)
+      expect(response.documents.first.id).to eq(44_691_518)
+      expect(response.documents.first.vendor.name).to be_a(String)
+    end
   end
 
   describe "document.process(id, params)" do
@@ -33,7 +41,7 @@ RSpec.describe "Document API" do
 
     let(:document_params) do
       {
-        file_path: Dir.pwd + "/spec/fixtures/receipt.jpg",
+        file_path: file_fixture_path("receipt.jpg"),
         auto_delete: true,
         boost_mode: true,
         async: false,
@@ -49,9 +57,7 @@ RSpec.describe "Document API" do
       }
     end
 
-    let(:expected_file_data) do
-      File.read("spec/fixtures/receipt_base64.txt").gsub("\n", "")
-    end
+    let(:expected_file_data) { receipt_file_data }
 
     let(:expected_document_params) do
       {
@@ -158,6 +164,32 @@ RSpec.describe "Document API" do
       response = client.document.delete(44_691_518)
 
       expect(response["message"]).to eq("Document has been deleted")
+    end
+  end
+
+  describe "document.process_bulk(file_urls)" do
+    before do
+      stub_request(:post, "https://api.veryfi.com/api/v8/partner/documents/bulk/").to_return(
+        body: { document_ids: [1, 2] }.to_json
+      )
+    end
+
+    let(:file_urls) do
+      %w[
+        https://cdn.example.com/receipt1.jpg
+        https://cdn.example.com/receipt2.jpg
+      ]
+    end
+
+    it "submits the urls in a single bulk request" do
+      expect_any_instance_of(Veryfi::Request).to receive(:post).with(
+        "/partner/documents/bulk/",
+        file_urls: file_urls
+      ).and_call_original
+
+      response = client.document.process_bulk(file_urls)
+
+      expect(response["document_ids"]).to eq([1, 2])
     end
   end
 end

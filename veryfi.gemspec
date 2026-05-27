@@ -27,9 +27,11 @@ Gem::Specification.new do |spec|
     ".rubocop.yml",
     ".ruby-version",
     ".semaphore/semaphore.yml",
+    ".yardopts",
     "Gemfile",
     "Gemfile.lock",
     "README.md",
+    "Rakefile",
     "bin/autospec",
     "bin/bundle-audit",
     "bin/ci",
@@ -48,13 +50,29 @@ Gem::Specification.new do |spec|
     "docs/index.markdown",
     "lib/.keep",
     "lib/veryfi.rb",
+    "lib/veryfi/api/any_document.rb",
+    "lib/veryfi/api/bank_statement.rb",
+    "lib/veryfi/api/bank_statement_split.rb",
+    "lib/veryfi/api/business_card.rb",
+    "lib/veryfi/api/check.rb",
+    "lib/veryfi/api/classify.rb",
     "lib/veryfi/api/document.rb",
     "lib/veryfi/api/document_tag.rb",
+    "lib/veryfi/api/file_payload.rb",
     "lib/veryfi/api/line_item.rb",
+    "lib/veryfi/api/pdf_split.rb",
     "lib/veryfi/api/tag.rb",
+    "lib/veryfi/api/tag_operations.rb",
+    "lib/veryfi/api/tax_line.rb",
+    "lib/veryfi/api/w2.rb",
+    "lib/veryfi/api/w2_split.rb",
+    "lib/veryfi/api/w8.rb",
+    "lib/veryfi/api/w9.rb",
     "lib/veryfi/client.rb",
+    "lib/veryfi/configuration.rb",
     "lib/veryfi/error.rb",
     "lib/veryfi/request.rb",
+    "lib/veryfi/resource.rb",
     "lib/veryfi/signature.rb",
     "lib/veryfi/version.rb",
     "veryfi.gemspec"
@@ -65,10 +83,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.license = "MIT"
 
+  spec.required_ruby_version = ">= 3.0"
+
   spec.add_dependency "base64", "~> 0.1"
   spec.add_dependency "openssl", ">= 2.2", "< 4.1"
 
-  spec.add_dependency "faraday", ">= 1.7", "< 3.0"
+  # Faraday 2.14.1 is the floor of the CVE-2026-25765-fixed 2.x line.
+  spec.add_dependency "faraday", ">= 2.14.1", "< 3.0"
 
   spec.add_development_dependency "bundler", "~> 2.4"
   spec.add_development_dependency "bundler-audit", "~> 0.9"
@@ -77,11 +98,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.9"
   spec.add_development_dependency "rspec-its", "~> 1.3"
   spec.add_development_dependency "rubocop", "~> 1.65"
+  spec.add_development_dependency "rubocop-rake", "~> 0.6"
   spec.add_development_dependency "rubocop-rspec", "~> 3.0"
   spec.add_development_dependency "simplecov", "~> 0.21"
   spec.add_development_dependency "simplecov-badge", "~> 2.0"
   spec.add_development_dependency "vcr", "~> 6.0"
   spec.add_development_dependency "webmock", "~> 3.14"
   spec.add_development_dependency "rexml", "~> 3.4.4"
-  spec.add_development_dependency "activesupport", "~> 6.0"
+  spec.add_development_dependency "yard", "~> 0.9"
 end

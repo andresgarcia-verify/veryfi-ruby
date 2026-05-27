@@ -1,0 +1,20 @@
+{
+  "tax_lines": [
+    {
+      "id": 12009001,
+      "name": "Sales Tax",
+      "rate": 6.25,
+      "base": 145.0,
+      "total": 9.06,
+      "order": 0
+    },
+    {
+      "id": 12009002,
+      "name": "Local Tax",
+      "rate": 1.5,
+      "base": 145.0,
+      "total": 2.18,
+      "order": 1
+    }
+  ]
+}

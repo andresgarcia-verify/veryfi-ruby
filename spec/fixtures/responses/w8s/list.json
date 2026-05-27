@@ -1,0 +1,18 @@
+{
+  "documents": [
+    {
+      "id": 79007001,
+      "name_of_organization": "Acme Ltd",
+      "country_of_incorporation": "Cayman Islands",
+      "chapter_3_status": "Corporation",
+      "created_date": "2024-08-01 10:00:00"
+    },
+    {
+      "id": 79007002,
+      "name_of_organization": "Globex S.A.",
+      "country_of_incorporation": "Switzerland",
+      "chapter_3_status": "Corporation",
+      "created_date": "2024-08-02 10:00:00"
+    }
+  ]
+}

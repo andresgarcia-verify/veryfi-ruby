@@ -18,10 +18,12 @@ unless ENV["CI"]
     SimpleCov::Formatter::BadgeFormatter.timestamp = true
 
     # call SimpleCov::Formatter::BadgeFormatter after the normal HTMLFormatter
-    SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-      SimpleCov::Formatter::HTMLFormatter,
-      SimpleCov::Formatter::BadgeFormatter
-    ]
+    SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+      [
+        SimpleCov::Formatter::HTMLFormatter,
+        SimpleCov::Formatter::BadgeFormatter
+      ]
+    )
   end
 end
 

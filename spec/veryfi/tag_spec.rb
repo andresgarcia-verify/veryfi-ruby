@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe "Tag API" do
   include_context :with_veryfi_client
 
-  let(:tags_fixture) { File.read("spec/fixtures/tags.json") }
+  let(:tags_fixture) { response_fixture_body("tags/list") }
   let(:tags) { JSON.parse(tags_fixture)["tags"] }
 
   let(:document_id) { 38_947_300 }
