@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe "LineItem API" do
   include_context :with_veryfi_client
 
-  let(:line_items_fixture) { File.read("spec/fixtures/line_items.json") }
+  let(:line_items_fixture) { response_fixture_body("documents/line_items") }
   let(:line_items) { JSON.parse(line_items_fixture)["line_items"] }
 
   let(:document_id) { 38_947_300 }
@@ -107,6 +107,20 @@ RSpec.describe "LineItem API" do
       response = client.line_item.delete(document_id, 101_170_751)
 
       expect(response["message"]).to eq("Line item has been deleted")
+    end
+  end
+
+  describe "line_item.delete_all(document_id)" do
+    before do
+      stub_request(:delete, "#{base_url}/line-items").to_return(
+        body: { status: "ok", message: "All line items have been deleted" }.to_json
+      )
+    end
+
+    it "can delete all line items for a document" do
+      response = client.line_item.delete_all(document_id)
+
+      expect(response["message"]).to eq("All line items have been deleted")
     end
   end
 end

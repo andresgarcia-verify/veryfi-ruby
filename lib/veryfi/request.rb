@@ -5,8 +5,16 @@ require "faraday"
 require "json"
 
 module Veryfi
+  # Low-level HTTP layer used by every API class. You typically don't need
+  # to interact with this directly — go through {Veryfi::Client} instead.
+  #
+  # Custom Faraday configuration (adapter, retries, logging, persistent
+  # connections, …) can be supplied via the `faraday:` block when
+  # constructing the client. The block receives the `Faraday::Connection`
+  # before it's frozen, so you can attach any middleware you want.
   class Request
-    attr_reader :client_id, :client_secret, :username, :api_key, :base_url, :api_version, :timeout
+    attr_reader :client_id, :client_secret, :username, :api_key,
+                :base_url, :api_version, :timeout, :faraday_block
 
     VERBS_WITH_BODIES = %i[post put].freeze
 
@@ -17,7 +25,8 @@ module Veryfi
       api_key,
       base_url,
       api_version,
-      timeout
+      timeout,
+      faraday_block = nil
     )
       @client_id = client_id
       @client_secret = client_secret
@@ -26,6 +35,7 @@ module Veryfi
       @base_url = base_url
       @api_version = api_version
       @timeout = timeout
+      @faraday_block = faraday_block
     end
 
     def get(path, params = {})
@@ -68,6 +78,7 @@ module Veryfi
     def conn
       @_conn ||= Faraday.new do |conn|
         conn.options.timeout = timeout
+        faraday_block&.call(conn)
       end
     end
 
@@ -84,18 +95,18 @@ module Veryfi
       signature = generate_signature(params, timestamp)
 
       default_headers.merge(
-        "X-Veryfi-Request-Timestamp": timestamp,
-        "X-Veryfi-Request-Signature": signature
+        "X-Veryfi-Request-Timestamp" => timestamp,
+        "X-Veryfi-Request-Signature" => signature
       )
     end
 
     def default_headers
       {
-        "User-Agent": "Ruby Veryfi-Ruby/#{Veryfi::VERSION}",
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Client-Id": client_id,
-        Authorization: "apikey #{username}:#{api_key}"
+        "User-Agent" => "Ruby Veryfi-Ruby/#{Veryfi::VERSION}",
+        "Accept" => "application/json",
+        "Content-Type" => "application/json",
+        "Client-Id" => client_id,
+        "Authorization" => "apikey #{username}:#{api_key}"
       }
     end
 
@@ -104,9 +115,9 @@ module Veryfi
     end
 
     def process_response(response)
-      return {} if response.body.empty?
+      return Veryfi::Resource.new if response.body.empty?
 
-      JSON.parse(response.body)
+      Veryfi::Resource.wrap(JSON.parse(response.body))
     end
   end
 end

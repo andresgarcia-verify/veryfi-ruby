@@ -1,0 +1,10 @@
+--markup markdown
+--readme README.md
+--no-private
+--protected
+--output-dir docs/api
+--exclude /spec/
+--exclude /bin/
+lib/**/*.rb
+-
+LICENSE

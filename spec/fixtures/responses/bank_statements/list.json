@@ -1,0 +1,24 @@
+{
+  "documents": [
+    {
+      "id": 88001001,
+      "account_holder_name": "John Doe",
+      "account_number": "0001234567",
+      "bank_name": "Veryfi Bank",
+      "created_date": "2024-02-01 10:00:00",
+      "ending_balance": 12345.67,
+      "starting_balance": 10000.0,
+      "statement_date": "2024-01-31"
+    },
+    {
+      "id": 88001002,
+      "account_holder_name": "Jane Roe",
+      "account_number": "0007654321",
+      "bank_name": "Veryfi Bank",
+      "created_date": "2024-02-02 10:00:00",
+      "ending_balance": 543.21,
+      "starting_balance": 1000.0,
+      "statement_date": "2024-01-31"
+    }
+  ]
+}

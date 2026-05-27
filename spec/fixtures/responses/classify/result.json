@@ -1,0 +1,9 @@
+{
+  "document_type": "invoice",
+  "score": 0.987,
+  "predictions": [
+    { "document_type": "invoice", "score": 0.987 },
+    { "document_type": "receipt", "score": 0.011 },
+    { "document_type": "w2", "score": 0.001 }
+  ]
+}

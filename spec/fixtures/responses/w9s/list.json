@@ -1,0 +1,20 @@
+{
+  "documents": [
+    {
+      "id": 80008001,
+      "name": "John Doe",
+      "business_name": "Acme Inc",
+      "federal_tax_classification": "Individual/sole proprietor",
+      "tax_id": "12-3456789",
+      "created_date": "2024-09-01 10:00:00"
+    },
+    {
+      "id": 80008002,
+      "name": "Jane Roe",
+      "business_name": "Globex Corp",
+      "federal_tax_classification": "C Corporation",
+      "tax_id": "98-7654321",
+      "created_date": "2024-09-02 10:00:00"
+    }
+  ]
+}

@@ -19,3 +19,6 @@ doc/
 
 .env
 .idea/
+
+# Local-only OpenAPI reference (used for gap analysis, not shipped)
+schema.json

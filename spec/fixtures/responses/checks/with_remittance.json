@@ -1,0 +1,17 @@
+{
+  "id": 55009001,
+  "check": {
+    "id": 55009101,
+    "amount": 2500.0,
+    "check_number": "0010",
+    "date": "2024-10-01",
+    "payer": "John Doe",
+    "payee": "Acme Inc"
+  },
+  "remittance": {
+    "id": 55009201,
+    "invoice_number": "INV-2024-01",
+    "total": 2500.0
+  },
+  "created_date": "2024-10-02 09:30:00"
+}

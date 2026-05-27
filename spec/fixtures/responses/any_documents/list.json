@@ -1,0 +1,22 @@
+{
+  "documents": [
+    {
+      "id": 71012001,
+      "blueprint_name": "us_w2_2022",
+      "created_date": "2024-01-04 10:11:12",
+      "data": {
+        "employee_name": "John Doe",
+        "employer_name": "Acme Inc"
+      }
+    },
+    {
+      "id": 71012002,
+      "blueprint_name": "us_w2_2022",
+      "created_date": "2024-01-05 12:13:14",
+      "data": {
+        "employee_name": "Jane Roe",
+        "employer_name": "Acme Inc"
+      }
+    }
+  ]
+}
