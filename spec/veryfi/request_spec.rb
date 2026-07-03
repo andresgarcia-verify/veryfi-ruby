@@ -94,6 +94,41 @@ RSpec.describe Veryfi::Request do
     end
   end
 
+  describe "stale connection recovery" do
+    it "resets the cached connection and retries when Net::ReadTimeout is raised with a closed socket" do
+      request = Veryfi::Request.new("cid", nil, "u", "k",
+                                    "https://api.veryfi.com/api/", "v8", 30)
+
+      call_count = 0
+      fake_conn = instance_double(Faraday::Connection)
+      allow(fake_conn).to receive(:get) do
+        call_count += 1
+        raise Net::ReadTimeout, "#<TCPSocket:(closed)>" if call_count == 1
+
+        instance_double(Faraday::Response, success?: true, body: '{"id":1}', status: 200)
+      end
+
+      allow(request).to receive(:conn).and_wrap_original do |original|
+        call_count.zero? ? fake_conn : fake_conn
+      end
+      allow(request).to receive(:conn).and_return(fake_conn)
+
+      expect { request.get("/partner/documents/") }.not_to raise_error
+      expect(call_count).to eq(2)
+    end
+
+    it "re-raises Net::ReadTimeout when the socket is not closed" do
+      request = Veryfi::Request.new("cid", nil, "u", "k",
+                                    "https://api.veryfi.com/api/", "v8", 30)
+
+      fake_conn = instance_double(Faraday::Connection)
+      allow(fake_conn).to receive(:get).and_raise(Net::ReadTimeout, "execution expired")
+      allow(request).to receive(:conn).and_return(fake_conn)
+
+      expect { request.get("/partner/documents/") }.to raise_error(Net::ReadTimeout, /execution expired/)
+    end
+  end
+
   context "when server responds with empty body" do
     before do
       stub_request(:get, /\.*/).to_return(status: 501, body: "")

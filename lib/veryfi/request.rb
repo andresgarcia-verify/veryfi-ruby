@@ -65,7 +65,15 @@ module Veryfi
       body = generate_body(http_verb, params)
       headers = generate_headers(params)
 
-      response = conn.public_send(http_verb, url, body, headers)
+      begin
+        response = conn.public_send(http_verb, url, body, headers)
+      rescue Net::ReadTimeout => e
+        raise unless e.message.include?("closed")
+
+        @_conn = nil
+        response = conn.public_send(http_verb, url, body, headers)
+      end
+
       json_response = process_response(response)
 
       if response.success?
